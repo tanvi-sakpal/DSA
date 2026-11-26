@@ -47,15 +47,20 @@ class BST:
             print("BST is empty")
         arr = []
         cnt = 0
+        level = 0
         arr.append(rt)
         while(cnt < len(arr)):
-            temp = arr[cnt]
-            cnt += 1
-            print(temp.data, end = " ")
-            if temp.left:
-                arr.append(temp.left)
-            if temp.right:
-                arr.append(temp.right)
+            node_count = len(arr) - cnt # LEVEL WISE NODE COUNT
+            print("\nLevel No:", level, end=" -> ")
+            for i in range(node_count):
+                temp = arr[cnt]
+                cnt += 1   # No of  nodes visited
+                print(temp.data, end = " ")
+                if temp.left:
+                    arr.append(temp.left)
+                if temp.right:
+                    arr.append(temp.right)
+            level += 1
     def count_nleaf(self,rt):
         if rt is None:
             return
